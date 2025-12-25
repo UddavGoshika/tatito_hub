@@ -99,7 +99,7 @@ body.light {
 } */
 
 body {
-  background: url("/3.gif") no-repeat center center fixed;
+  background: url("3.gif") no-repeat center center fixed;
   background-size: cover;
 
   color: var(--text-primary);
