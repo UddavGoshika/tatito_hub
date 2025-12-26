@@ -124,6 +124,8 @@ body::before {
 /* ================= PAGE VISIBILITY ================= */
 .page {
   display: none;
+  /* overflow-y: auto;
+  max-height:800px; */
   
 }
 
@@ -187,14 +189,22 @@ body::before {
 .brand-text h1 {
   font-size: 22px;
   font-weight: 700;
-  margin: 0;
+  /* margin: 0; */
   color: var(--text-primary);
+}
+.onlineprojects{
+font-size: 22px;
+  font-weight: 700;
+  margin-left:20px;
+  margin-top:-30px;
+  color: var(--text-primary);
+
 }
 
 .brand-text p {
   font-size: 13px;
   color: var(--text-muted);
-  margin: 0;
+  margin: 10px;
 }
 
 /* Nav Container */
@@ -747,12 +757,15 @@ background: rgba(5, 197, 207, 0.75);
 
 
 .herobimage {
-  width: 500px;
+  width: 400px;
   margin-top: 50px;
   margin-left: 40px;
   border-radius: 20px;
   box-shadow: var(--shadow-soft);
   transition: transform 0.6s ease, filter 0.6s ease;
+}
+.projects{
+
 }
 
 .hero-text {
@@ -4328,8 +4341,10 @@ border-radius:22px;
 
 .section {
   padding: 10px 0;
+  margin-bottom:50px;
   padding-top:10px;
   margin-top:20px;
+  
 }
 
 .section-header {
@@ -4833,7 +4848,7 @@ margin-top:-50px;
 
 .showcase-item img {
   width: 100%;
-  height: 150px;
+  height: 450px;
   object-fit: cover;
 }
 
@@ -5348,7 +5363,7 @@ margin-left:-750px;
 
 /* ====== MESSAGES ====== */
 .chat-messages{
-  height: 320px;              /* or vh based */
+  height: 180px;              /* or vh based */
   overflow-y: auto;           /* enable vertical scroll */
   overflow-x: hidden;
   padding: 14px;
@@ -5936,6 +5951,45 @@ p{opacity:.85}
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .header-inner {
+    padding: 8px 12px;
+    max-width: 1000px;
+    gap: 8px;
+  }
+  .brand-logo {
+    width: 90px;
+    height: 90px;
+  }
+  .brand-text h1 { font-size: 20px; }
+  .onlineprojects{ font-size: 18px; margin-left:10px; margin-top:-15px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { margin-left: 20px; font-size: 16px; }
+  .search-box { width: 160px; }
+
+  .hero { grid-template-columns: 1fr; margin-left: 20px; margin-top: 70px; }
+  .herobimage { width: 320px; margin-left: 0; margin-top: 20px; }
+  .hero-text { margin-left: 0; margin-top: 10px; transform: none; }
+
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .container { padding: 0 20px; grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 768px) {
+  .header-inner { padding: 8px 10px; }
+  .brand-logo { width: 76px; height: 76px; }
+  .brand-text h1 { font-size: 18px; }
+  .brand-text p { display: none; }
+  .onlineprojects { display: none; }
+  .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { margin-left: 8px; font-size: 15px; }
+  .search-box { width: 140px; }
+
+  .hero-eyebrow { font-size: 1.2rem; }
+  .hero-title { font-size: clamp(2rem, 6vw, 3rem); }
+  .herobimage { width: 280px; margin: 20px auto; display:block; }
+}
+
 @media (max-width: 600px) {
   .legal-page {
     padding: 32px 24px;
@@ -5943,7 +5997,33 @@ p{opacity:.85}
   .legal-page h1 {
     font-size: 2rem;
   }
-}
 
+  .header-inner { padding: 8px 10px; border-radius: 12px; }
+  .brand-logo { width: 64px; height: 64px; }
+  .brand-text h1 { font-size: 16px; }
+  .brand-text p { display: none; }
+  .onlineprojects { display: none; }
+  .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { margin-left: 6px; font-size: 14px; }
+  .search-box { display: none; }
+  .announce-bar { display: none; }
+  .utility-actions { gap: 6px; }
+
+  .hero { margin-left: 10px; margin-top: 60px; padding: 20px; grid-template-columns: 1fr; min-height: auto; }
+  .hero-eyebrow { font-size: 1rem; }
+  .hero-title { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .hero-subtitle { max-width: 100%; font-size: 1rem; margin-bottom: 20px; }
+  .hero-btn { padding: 12px 20px; font-size: 0.9rem; }
+  .herobimage { width: 260px; margin: 20px auto; display:block; }
+  .hero-text { margin: 10px auto; transform: none; max-width: 100%; }
+
+  .grid { grid-template-columns: 1fr; margin-left: 0; }
+  .container { grid-template-columns: 1fr; padding: 0 16px; max-width: 100%; }
+
+  .section-header { margin-bottom: 40px; }
+  .section-header h2 { font-size: 2rem; }
+  .section-header p { font-size: 1rem; }
+  .quick-box { width: auto; padding: 6px 8px; font-size: 0.8rem; }
+}
 
 /* temp*/
