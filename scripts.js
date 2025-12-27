@@ -217,6 +217,55 @@ function showNotification(message, type = 'info') {
 }
 
 
+/* ---------- FONT SIZE CONTROLS (increase / decrease) ---------- */
+(function () {
+  const INCREASE_BTN = document.querySelector('.font-increase');
+  const DECREASE_BTN = document.querySelector('.font-decrease');
+  const STORAGE_KEY = 'tatito-font-size';
+  const MIN_SIZE = 12; // px
+  const MAX_SIZE = 22; // px
+  const STEP = 1; // px
+
+  function getSavedSize() {
+    const s = localStorage.getItem(STORAGE_KEY);
+    if (s) return parseFloat(s);
+    const computed = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    return computed;
+  }
+
+  function applySize(size) {
+    const clamped = Math.max(MIN_SIZE, Math.min(MAX_SIZE, size));
+    document.documentElement.style.fontSize = clamped + 'px';
+    localStorage.setItem(STORAGE_KEY, String(clamped));
+  }
+
+  function change(delta) {
+    const current = getSavedSize();
+    const next = Math.round((current + delta) * 10) / 10;
+    applySize(next);
+    showNotification(`Font size ${delta > 0 ? 'increased' : 'decreased'} to ${parseFloat(next).toFixed(0)}px`, 'success');
+  }
+
+  if (INCREASE_BTN) INCREASE_BTN.addEventListener('click', () => change(STEP));
+  if (DECREASE_BTN) DECREASE_BTN.addEventListener('click', () => change(-STEP));
+
+  // Optional keyboard shortcuts: Ctrl/Cmd + =  and Ctrl/Cmd + -
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === '=' || e.key === '+')) {
+      e.preventDefault(); change(STEP);
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === '-') {
+      e.preventDefault(); change(-STEP);
+    }
+  });
+
+  // Apply saved size on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) document.documentElement.style.fontSize = saved + 'px';
+  });
+
+})();
 
 
 
